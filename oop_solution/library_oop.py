@@ -99,14 +99,16 @@ class Library:
 
     def display_member_books(self, id):
         member = self.get_member(id)
+
         if member is None:
             print("Error: Member not found!")
+            return
 
         print(f"\n=== Books borrowed by {member.name} ===")
         if member.borrowed_list is None:
             print("No books currently borrowed")
         else:
-            for book_id in member.borrowed_books:
+            for book_id in member.borrowed_list:
                 book = self.get_book(book_id)
                 if book:
                     print(f"- {book.title} by {book.author}")
